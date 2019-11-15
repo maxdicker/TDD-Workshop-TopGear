@@ -26,17 +26,17 @@ package com.lagerweij;
 public class GearBox {
 
 	private int currentGear = 0;
-	private int e = 0;
+	private int lastReceivedRPM = 0;
 
-	public void doit(int i) {
+	public void determineCurrentGearFrom(int rpm) {
 		if (currentGear < 0) {
 			// do nothing!
-			e = i;
+			lastReceivedRPM = rpm;
 		} else {
 			if (currentGear > 0) {
-				if (i > 2000) {
+				if (rpm > 2000) {
 					currentGear++;
-				} else if (i < 500) {
+				} else if (rpm < 500) {
 					currentGear--;
 				}
 			}
@@ -48,11 +48,11 @@ public class GearBox {
 			currentGear++;
 		}
 		
-		e = i;
+		lastReceivedRPM = rpm;
 	}
 
-	public int getE() {
-		return e;
+	public int getLastReceivedRPM() {
+		return lastReceivedRPM;
 	}
 
 	public int getCurrentGear() {
