@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="CodingAssignments_Refactoring_Small" target="9" />
+      <module name="CodingAssignments_Refactoring_Small" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -25,37 +25,42 @@ package com.lagerweij;
 
 public class GearBox {
 
+	public static final int NEUTRAL_GEAR = 0;
+    private static final int MAX_GEAR = 6;
 	private int currentGear = 0;
-	private int lastReceivedRPM = 0;
+    private int lastReceivedRPM = 0;
 
-	public void determineCurrentGearFrom(int rpm) {
-		if (currentGear < 0) {
-			// do nothing!
-			lastReceivedRPM = rpm;
-		} else {
-			if (currentGear > 0) {
-				if (rpm > 2000) {
-					currentGear++;
-				} else if (rpm < 500) {
-					currentGear--;
-				}
-			}
-		}	
-		
-		if (currentGear > 6) {
-			currentGear--;
-		} else if (currentGear < 1) {
-			currentGear++;
-		}
-		
-		lastReceivedRPM = rpm;
-	}
+    public void determineCurrentGearFrom(int rpm) {
+        if (currentGear < NEUTRAL_GEAR) {
+            lastReceivedRPM = rpm;
+        } else {
+            if (currentGear > NEUTRAL_GEAR) {
+                if (rpm > 2000) {
+                    currentGear++;
+                } else if (rpm < 500) {
+                    currentGear--;
+                }
+            }
+        }
 
-	public int getLastReceivedRPM() {
-		return lastReceivedRPM;
-	}
+        if (currentGear > MAX_GEAR) {
+            currentGear--;
+        } else if (currentGear < 1) {
+            currentGear++;
+        }
 
-	public int getCurrentGear() {
-		return currentGear;
-	}
+        lastReceivedRPM = rpm;
+    }
+
+    public int getLastReceivedRPM() {
+        return lastReceivedRPM;
+    }
+
+    public int getCurrentGear() {
+        return currentGear;
+    }
+
+    public int getMaxGear() {
+        return MAX_GEAR;
+    }
 }
