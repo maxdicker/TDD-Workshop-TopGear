@@ -11,6 +11,7 @@ public class GearBoxTest {
         Assert.assertEquals(0, testBox.getLastReceivedRPM());
     }
     //refactor to include new constant NEUTRAL
+    //
 
     @Test
     public void currentGearStartsAtZero() {
